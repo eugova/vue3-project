@@ -1,45 +1,27 @@
 <template>
-    <div>
+    <div class="dish-list">
       <h2>Список блюд</h2>
       <ul>
-        <DishItem v-for="dish in dishes" :key="dish.id" :dish="dish" @delete="deleteDish"/>
+        <li v-for="dish in dishes" :key="dish.id">
+          {{ dish.name }} - {{ dish.price }} руб.
+        </li>
       </ul>
-      <DishForm @add="addDish"/>
     </div>
   </template>
   
   <script setup>
-  import { ref, onMounted } from 'vue';
-  import axios from 'axios';
-  import DishItem from './DishItem.vue';
-  import DishForm from './DishForm.vue';
+  import { ref } from 'vue';
   
-  const dishes = ref([]);
-  
-  // Получение всех блюд из API
-  const fetchDishes = async () => {
-    const response = await axios.get('http://localhost/api.php');
-    dishes.value = response.data;
-  };
-  
-  // Добавление нового блюда
-  const addDish = async (newDish) => {
-    const response = await axios.post('http://localhost/api.php', newDish);
-    dishes.value.push(response.data);
-  };
-  
-  // Удаление блюда по ID
-  const deleteDish = async (dishId) => {
-    await axios.delete(`http://localhost/api.php?id=${dishId}`);
-    dishes.value = dishes.value.filter(dish => dish.id !== dishId);
-  };
-  
-  // Загрузка данных при монтировании компонента
-  onMounted(fetchDishes);
+  // Здесь мы создаем локальный массив блюд
+  const dishes = ref([
+    { id: 1, name: 'Паста Альфредо', price: 450 },
+    { id: 2, name: 'Салат Цезарь', price: 350 },
+    { id: 3, name: 'Пицца Маргарита', price: 500 },
+  ]);
   </script>
   
   <style scoped>
-  ul {
-    list-style-type: none;
+  .dish-list {
+    margin-bottom: 20px;
   }
   </style>

@@ -1,16 +1,17 @@
 <template>
-    <footer>
-      <p>&copy; 2024 Ресторан. Все права защищены.</p>
+    <footer class="footer">
+      <p>&copy; 2024 Ресторан.</p>
     </footer>
   </template>
   
   <script setup>
+  // Здесь можно добавить дополнительные функции в будущем
   </script>
   
   <style scoped>
-  footer {
+  .footer {
     background-color: #f8f9fa;
-    padding: 10px;
     text-align: center;
+    padding: 10px;
   }
   </style>
