@@ -1,0 +1,31 @@
+/* Общие стили */
+html, body {
+  height:100%;
+  margin:0;
+  font-family:'Arial', sans-serif;
+}
+
+/* Стили для кнопок */
+.btn {
+  display:inline-block;
+  padding:.5rem .75rem; /* Отступы кнопки */
+  border-radius:.25rem; /* Скругленные углы кнопки */
+}
+
+/* Стили для списка блюд */
+.list-group-item {
+ background-color:#f8e1d4; /* Бежевый фон для элементов меню */
+}
+
+/* Стили для футера */
+.footer {
+ background-color:#f9f9f9; /* Светлый фон футера */
+ text-align:center;
+ padding:.5rem; /* Отступы футера */
+}
+
+/* Стили для секций */
+.section {
+ padding-top:40px;
+ text-align:center; /* Центрируем текст в секциях */
+}
