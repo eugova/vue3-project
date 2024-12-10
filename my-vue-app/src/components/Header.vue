@@ -1,24 +1,11 @@
 <template>
   <header class="header">
     <h1>Ресторан</h1>
-    <nav>
-      <ul class="nav">
-        <li><a @click.prevent="scrollTo('home')">Главная</a></li>
-        <li><a @click.prevent="scrollTo('about')">О нас</a></li>
-        <li><a @click.prevent="scrollTo('menu')">Меню</a></li>
-        <li><a @click.prevent="scrollTo('dishes')">Блюда</a></li>
-      </ul>
-    </nav>
   </header>
 </template>
 
 <script setup>
-const scrollTo = (section) => {
-  const element = document.getElementById(section);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
-};
+
 </script>
 
 <style scoped>
