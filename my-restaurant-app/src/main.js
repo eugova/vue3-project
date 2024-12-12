@@ -1,6 +1,10 @@
 import './assets/main.css'
 
 import { createApp } from 'vue'
-import App from './App.vue'
+import LogView from './views/LogView.vue'
+import router from './router'
 
-createApp(App).mount('#app')
+
+const app = createApp(LogView);
+app.use(router);
+app.mount('#app');
