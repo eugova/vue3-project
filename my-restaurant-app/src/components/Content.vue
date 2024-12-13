@@ -1,38 +1,3 @@
-<template>
-  <section class="menu">
-  <h2 style="text-align: center;">Меню</h2>
-  <div class="container">
-    <div class="card mx-auto" style="max-width: 800px;">
-      <div class="card-body">
-        <div class="button-container">
-          <button type="button" class="btn btn-outline-dark" @click="openModal">Добавить блюдо</button>
-        </div>
-        <div class="card-container">
-          <div class="card dish-card" v-for="(dish, index) in dishes" :key="index">
-            <h3>{{ dish.name }}</h3>
-            <p>{{ dish.description }}</p>
-            <p class="price">Цена: {{ dish.price }} ₽</p>
-            <button type="button" class="btn btn-outline-dark" @click="editDish(index)">Изменить</button>
-            <button type="button" class="btn btn-outline-dark" @click="deleteDish(index)">Удалить</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-    <div v-if="isModalOpen" class="modal">
-      <div class = "modal-content">
-        <span class="close" @click="closeModal">&times;</span>
-        <h3>{{ isEditing ? 'Изменить Блюдо' : 'Добавить Блюдо' }}</h3>
-        <input class="form-control" v-model="currentDish.name" placeholder="Название блюда" />
-        <textarea class="form-control" v-model="currentDish.description" placeholder="Описание блюда"></textarea>
-        <input class="form-control" v-model.number="currentDish.price" type="number" placeholder="Цена" />
-        <button type="button" class="btn btn-outline-dark" @click="saveDish">{{ isEditing ? 'Сохранить' : 'Добавить' }}</button>
-      </div>
-    </div>
-  </section>
-</template>
-
 <script setup>
 import { ref } from 'vue';
 
@@ -78,6 +43,42 @@ function deleteDish(index) {
   dishes.value.splice(index, 1); // Удаление блюда из массива
 }
 </script>
+<template>
+  <section class="menu">
+  <h2 style="text-align: center;">Меню</h2>
+  <div class="container">
+    <div class="card mx-auto" style="max-width: 800px;">
+      <div class="card-body">
+        <div class="button-container">
+          <button type="button" class="btn btn-outline-dark" @click="openModal">Добавить блюдо</button>
+        </div>
+        <div class="card-container">
+          <div class="card dish-card" v-for="(dish, index) in dishes" :key="index">
+            <h3>{{ dish.name }}</h3>
+            <p>{{ dish.description }}</p>
+            <p class="price">Цена: {{ dish.price }} ₽</p>
+            <button type="button" class="btn btn-outline-dark" @click="editDish(index)">Изменить</button>
+            <button type="button" class="btn btn-outline-dark" @click="deleteDish(index)">Удалить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div v-if="isModalOpen" class="modal">
+      <div class = "modal-content">
+        <span class="close" @click="closeModal">&times;</span>
+        <h3>{{ isEditing ? 'Изменить Блюдо' : 'Добавить Блюдо' }}</h3>
+        <input class="form-control" v-model="currentDish.name" placeholder="Название блюда" />
+        <textarea class="form-control" v-model="currentDish.description" placeholder="Описание блюда"></textarea>
+        <input class="form-control" v-model.number="currentDish.price" type="number" placeholder="Цена" />
+        <button type="button" class="btn btn-outline-dark" @click="saveDish">{{ isEditing ? 'Сохранить' : 'Добавить' }}</button>
+      </div>
+    </div>
+  </section>
+</template>
+
+
 
 <style scoped>
 .menu {

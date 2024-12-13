@@ -1,3 +1,35 @@
+<script setup>
+import { ref } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
+import { RouterLink, RouterView } from 'vue-router'
+
+const username = ref('');
+const password = ref('');
+const errorMessage = ref('');
+const router = useRouter();
+
+// const login = async () => {
+//   try {
+//     const response = await axios.post('http://yugova.vyatgeo.ru/loginc.php', {
+//       username: username.value,
+//       password: password.value,
+//     });
+
+//     if (response.data.success) {
+//       // Успешный вход, перенаправление на MenuView.vue
+//       router.push({ name: 'MenuView' });
+//     } else {
+//       // Вывод сообщения об ошибке
+//       errorMessage.value = response.data.message;
+//     }
+//   } catch (error) {
+//     console.error('Ошибка при входе:', error);
+//     errorMessage.value = 'Произошла ошибка при входе.';
+//   }
+// };
+</script>
+
 
 <template>
   <div class="login-container">
@@ -26,40 +58,11 @@
       <button class="btn btn-success" type="submit">Войти</button>
       <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
     </form>
-    <p>Нет аккаунта? <router-link to="/register">Зарегистрируйтесь здесь</router-link></p>
+    <p>Нет аккаунта? <a href="/register">Зарегистрируйтесь здесь</a></p>
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import axios from 'axios';
-import { useRouter } from 'vue-router';
 
-const username = ref('');
-const password = ref('');
-const errorMessage = ref('');
-const router = useRouter();
-
-const login = async () => {
-  try {
-    const response = await axios.post('http://localhost/test/login.php', {
-      username: username.value,
-      password: password.value,
-    });
-
-    if (response.data.success) {
-      // Успешный вход, перенаправление на MenuView.vue
-      router.push({ name: 'MenuView' });
-    } else {
-      // Вывод сообщения об ошибке
-      errorMessage.value = response.data.message;
-    }
-  } catch (error) {
-    console.error('Ошибка при входе:', error);
-    errorMessage.value = 'Произошла ошибка при входе.';
-  }
-};
-</script>
 
 <style scoped>
 .login-container {
